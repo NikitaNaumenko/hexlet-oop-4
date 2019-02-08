@@ -13,10 +13,11 @@ RSpec.describe Hexlet::Oop do
           "region":"PNZ","regionName":"Penzenskaya Oblast'",
           "status":"success","timezone":"Europe/Moscow","zip":"440000"})
     end
-    subject { Hexlet::Oop::Information.new(address: '94.181.188.132').get_info }
+    subject { Hexlet::Oop::InformationGetter.new('94.181.188.132').get_info }
 
     it 'return info' do
       expect(Net::HTTP).to receive(:get).and_return(expected_info)
+      expect(STDOUT).to receive(:puts).with(JSON.parse(expected_info))
       subject
     end
   end

@@ -2,6 +2,7 @@
 
 require 'hexlet/oop/version'
 require 'net/http'
+require 'json'
 
 module Hexlet
   module Oop
@@ -13,10 +14,27 @@ module Hexlet
       end
     end
 
-    class IpAddress
+    class InformationGetter
+      def initialize(entry_address)
+        @entry_address = entry_address
+      end
+
+      def get_info
+        address = Address.detect_address(address: @entry_address, type: :ip)
+        url = ApiUrl.new(url: API_URL, endpoint: address).get_api_url
+        request = Request.new(url)
+
+        puts request.perform
+      end
+    end
+
+    class Address
       class << self
-        def detect_ip_address(ip_address:)
-          ip_address || detect_self_ip_address
+        def detect_address(address:, type: :ip)
+          case type
+          when :ip
+            address || detect_self_ip_address
+          end
         end
 
         private
@@ -27,17 +45,28 @@ module Hexlet
       end
     end
 
-    class Information
-      def initialize(address:)
-        @address = Hexlet::Oop::IpAddress.detect_ip_address(ip_address: address)
+    class ApiUrl
+      def initialize(url: API_URL, endpoint:)
+        @url = url
+        @endpoint = endpoint
       end
 
-      attr_accessor :address
+      attr_accessor :url, :endpoint
 
-      def get_info
-        uri = URI(API_URL + address)
-        result = Net::HTTP.get(uri)
-        puts result
+      def get_api_url
+        URI(url + endpoint)
+      end
+    end
+
+    class Request
+      def initialize(url)
+        @url = url
+      end
+
+      attr_accessor :url
+
+      def perform
+        JSON.parse(Net::HTTP.get(url))
       end
     end
   end

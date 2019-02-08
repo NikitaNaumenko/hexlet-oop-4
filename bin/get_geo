@@ -3,4 +3,4 @@ require 'hexlet/oop'
 
 return Hexlet::Oop::Instruction.print_instruction if ARGV.include?('help')
 
-Hexlet::Oop::Information.new(address: ARGV[0]).get_info
+Hexlet::Oop::InformationGetter.new(address: ARGV[0]).get_info
