@@ -1,4 +1,9 @@
 # Hexlet::Oop
+[![Build Status](https://travis-ci.org/NikitaNaumenko/hexlet-oop-4.svg?branch=master)](https://travis-ci.org/NikitaNaumenko/hexlet-oop-4)
+[![Maintainability](https://api.codeclimate.com/v1/badges/58023595a6d04f83b7a3/maintainability)](https://codeclimate.com/github/NikitaNaumenko/hexlet-oop-4/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/58023595a6d04f83b7a3/test_coverage)](https://codeclimate.com/github/NikitaNaumenko/hexlet-oop-4/test_coverage)
+[![forthebadge](https://forthebadge.com/images/badges/fuck-it-ship-it.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-ruby.svg)](https://forthebadge.com)
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/hexlet/oop`. To experiment with that code, run `bin/console` for an interactive prompt.
 
