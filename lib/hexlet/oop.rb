@@ -1,4 +1,4 @@
-require "hexlet/oop/version"
+require 'hexlet/oop/version'
 
 module Hexlet
   module Oop
