@@ -3,6 +3,4 @@ require 'hexlet/oop'
 
 return Hexlet::Oop::Instruction.print_instruction if ARGV.include?('help')
 
-ip_address = Hexlet::Oop::IpAddress.detect_ip_address(ip_address: ARGV[0])
-
-puts Hexlet::Oop::Information.new(address: ip_address).get_info
+Hexlet::Oop::Information.new(address: ARGV[0]).get_info

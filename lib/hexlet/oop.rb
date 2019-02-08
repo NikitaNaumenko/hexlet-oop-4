@@ -29,14 +29,15 @@ module Hexlet
 
     class Information
       def initialize(address:)
-        @address = address
+        @address = Hexlet::Oop::IpAddress.detect_ip_address(ip_address: address)
       end
 
       attr_accessor :address
 
       def get_info
         uri = URI(API_URL + address)
-        Net::HTTP.get(uri)
+        result = Net::HTTP.get(uri)
+        puts result
       end
     end
   end
