@@ -2,6 +2,7 @@
 require 'hexlet/oop'
 require 'awesome_print'
 
-return Hexlet::Oop::Instruction.print_instruction if ARGV.include?('help')
-
-ap Hexlet::Oop::InformationGetter.new(ip: ARGV[0]).get_info
+geo_ip = Hexlet::Oop::GeoIp.new
+SELF_IP_URL = URI('https://api.ipify.org')
+ip_address = ARGV[0] || Net::HTTP.get(SELF_IP_URL)
+ap geo_ip.get_info(ip_address: ip_address)

@@ -1,14 +1,16 @@
 RSpec.describe Hexlet::Oop do
-  context 'return info' do
-    class FakeHttpClient
-      def self.get(_url)
-        'request sended!'
-      end
+  class FakeHttpClient
+    def self.get(_url)
+      { city: 'Penza', country: 'Russia', regionName: 'Penzenskaya Oblast' }.to_json
     end
+  end
 
+  context 'return info' do
     it 'return info' do
-      expect(Hexlet::Oop::InformationGetter.new(ip: '94.181.188.132').get_info(http_client: FakeHttpClient)).
-        to eq('request sended!')
+      expected_response = { city: 'Penza', country: 'Russia', regionName: 'Penzenskaya Oblast' }.to_json
+      geo_ip = Hexlet::Oop::GeoIp.new
+      result = geo_ip.get_info(ip_address: '1.2.3.4', client: FakeHttpClient)
+      is_asserted_by { JSON.parse(expected_response) == result }
     end
   end
 end
