@@ -6,7 +6,7 @@ require 'json'
 
 module Hexlet
   module Oop
-    API_URL = 'http://ip-api.com/json/'.freeze
+    API_URL = 'ip-api.com'.freeze
 
     class GeoIp
       def initialize(client: Net::HTTP)
@@ -15,8 +15,8 @@ module Hexlet
 
       attr_reader :client
 
-      def get_info(ip_address:)
-        url = URI(API_URL + ip_address)
+      def get_info(ip_address:, client: @client)
+        url = URI::HTTP.build(host: API_URL, path: "/json/#{ip_address}")
         result = client.get(url)
         JSON.parse(result)
       end
