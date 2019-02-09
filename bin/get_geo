@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'hexlet/oop'
+require 'awesome_print'
 
 return Hexlet::Oop::Instruction.print_instruction if ARGV.include?('help')
 
-Hexlet::Oop::InformationGetter.new(address: ARGV[0]).get_info
+ap Hexlet::Oop::InformationGetter.new(ip: ARGV[0]).get_info

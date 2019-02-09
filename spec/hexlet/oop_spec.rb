@@ -6,11 +6,9 @@ RSpec.describe Hexlet::Oop do
       end
     end
 
-    subject { Hexlet::Oop::InformationGetter.new('94.181.188.132', http_client: FakeHttpClient).get_info }
-
     it 'return info' do
-      expect(STDOUT).to receive(:puts).with('request sended!')
-      subject
+      expect(Hexlet::Oop::InformationGetter.new(ip: '94.181.188.132').get_info(http_client: FakeHttpClient)).
+        to eq('request sended!')
     end
   end
 end
